@@ -7,10 +7,24 @@
     <script src="script.js"></script>
     <script src="./template/template.js"></script>
     <link rel="stylesheet" href="./styles_css/style.css">
-    <link rel="stylesheet" href="./styles_css/general_style.css"
+    <link rel="stylesheet" href="./styles_css/general_style.css">
+    <link rel="icon"    href="./assets/icon/favicon-16x16.png"
 
 </head>
-<body>
-    
+<body onload="renderToOderList()">
+    <header class="header-section">
+        <img src="./assets/icon/android-chrome-192x192.png" alt="">
+        <h1>LieferBendo</h1>
+    </header>
+        <img class="img_atT" src="./assets/img/header_img.jpg">
+    <div id="order_price_basket_section">
+    <section id="food_prices">
+        <h2>Gerichte</h2>
+        <div id="to_oder"></div>
+    </section>
+    <section class="basket_things" id="basket">
+        <div class="content_of_basket"><h2>Warenkorb</h2></div>
+    </section>
+    </div>
 </body>
 </html>
