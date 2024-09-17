@@ -41,13 +41,75 @@ let foodToOrder = [
     },
 ];
 
+let basket = [ 
+    {
+        "name" : "",
+        "price" : "",
+        "information" : "",
+
+    }, 
+    {
+        "name" : "",
+        "price" : "",
+        "information" : "",
+
+    }, 
+    {
+        "name" : "",
+        "price" : "",
+        "information" : "",
+
+    }, 
+    {
+        "name" : "",
+        "price" : "",
+        "information" : "",
+
+    }, 
+    {
+        "name" : "",
+        "price" : "",
+        "information" : "",
+
+    },
+
+];
+
+
+function init(){
+    renderToOderList();
+    renderBasket();
+}
+
 
 function renderToOderList(){
     let content = document.getElementById('to_oder');
     content.innerHTML = "";
     for (let foodOderIndex = 0; foodOderIndex < foodToOrder.length; foodOderIndex++) {
         let foodItem = foodToOrder[foodOderIndex];
-        content.innerHTML += templateOderList(foodItem, foodOderIndex)
+        content.innerHTML += templateOderList(foodItem, foodOderIndex);
     
+    }
+}
+
+function renderBasket(){
+    let basketContent = document.getElementById('basket_content');
+    basketContent.innerHTML = "";
+    for (let basketIndex = 0; basketIndex < basket.length; basketIndex++){
+        let basketItem = basket[basketIndex];
+        basketContent.innerHTML += templateBasketList(basketItem, basketIndex);
+    }
+}
+
+function fromDishesToBasket(foodOderIndex){
+    let addToBasket = foodToOrder.splice(foodOderIndex, 1);
+    addToBasket.push(basket[0]);
+    if (basket[basketIndex].name != 0) {
+        addToBasket.innerHTML = `${basket[basketIndex] += 1}`
+    } else {
+        
+    };
+    if (basket[basketIndex].price != 0) {
+        addToBasket.innerHTML = `${basket[basketIndex] += 1}`
     }
 }

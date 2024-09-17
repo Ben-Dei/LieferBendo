@@ -11,7 +11,7 @@
 }
 .img_atT{
     width: 100%;
-    height: 400px;
+    height: 500px;
     margin-bottom: 0px;
     
 }
@@ -23,6 +23,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 0px;
 }
 .top-bar{
     display: flex;
@@ -47,6 +48,9 @@
     padding: 18px;
     background-color: orange;
     margin-top: 0px;
+}
+.basket_things{
+    position: relative;
 }
 .content_of_basket{
     width: 100%;
