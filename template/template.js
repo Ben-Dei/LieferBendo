@@ -13,8 +13,9 @@ function templateOderList(foodItem, foodOderIndex){
 function templateBasketList(basketItem, basketIndex){
     return /*html*/`
             <div>
-                <div>${basketIndex.name}</div>
-                <div>${basketItem.price}</div>
+                <div><p>${basketIndex.name}</p></div>
+                <div><p>${basketItem.price}</p></div>
+                <div><p>${basketItem.amount}</p></div>
             </div>
         `;
 }

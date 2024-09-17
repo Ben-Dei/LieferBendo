@@ -3,83 +3,52 @@ let foodToOrder = [
         "name" : "Pizza Salami",
         "price" : 8.99,
         "information" : "Fluffiger Pizzateig mit Tomatensoße bestrichen, mit feinster Salami belegt und mit zarrtem Mozerella überstreuselt",
-
+        "amount" : 1
     },
     {
         "name" : "Pizza Fungi",
         "price" : 8.99,
         "information" : "Fluffiger Pizzateig mit Tomatensoße bestrichen, mit zarrter Modzerella und mit klein geschnittenen Championstückchen",
-
+        "amount" : 1
     },
     {
         
         "name" : "Pizza Magarita",
         "price" : 8.99,
         "information" : "Fluffiger Pizzateig mit Tomatensoße bestrichen, mit zarrter Modzerella",
-
+        "amount" : 1
     },
     {
         
         "name" : "Chicken Nuggets",
         "price" : 10.99,
         "information" : "feinstes Hähchenbrustfleich panniert und frittriert",
-
+        "amount" : 1
     },
     {
         
         "name" : "Chicken Wings",
         "price" : 23.99,
         "information" : "feinste Hünchenkeulen und -flügel gebraten",
-
+        "amount" : 1
     },
     {
         
         "name" : "Hähnchenschnitzel im Brötchen",
         "price" : 25.99,
         "information" : "frisch paniertes Schnitzel vom Huhn zwischen zwei Brötchen",
-
+        "amount" : 1
     },
 ];
 
 let basket = [ 
     {
-        "name" : "",
-        "price" : "",
-        "information" : "",
-
+        "name" : [],
+        "price" : [],
+        "amount" : [],
     }, 
-    {
-        "name" : "",
-        "price" : "",
-        "information" : "",
-
-    }, 
-    {
-        "name" : "",
-        "price" : "",
-        "information" : "",
-
-    }, 
-    {
-        "name" : "",
-        "price" : "",
-        "information" : "",
-
-    }, 
-    {
-        "name" : "",
-        "price" : "",
-        "information" : "",
-
-    },
-
+    
 ];
-
-
-function init(){
-    renderToOderList();
-    renderBasket();
-}
 
 
 function renderToOderList(){
@@ -102,14 +71,11 @@ function renderBasket(){
 }
 
 function fromDishesToBasket(foodOderIndex){
-    let addToBasket = foodToOrder.splice(foodOderIndex, 1);
-    addToBasket.push(basket[0]);
-    if (basket[basketIndex].name != 0) {
-        addToBasket.innerHTML = `${basket[basketIndex] += 1}`
-    } else {
-        
-    };
-    if (basket[basketIndex].price != 0) {
-        addToBasket.innerHTML = `${basket[basketIndex] += 1}`
-    }
+   if(foodOderIndex == -1){
+      foodToOrder[foodOderIndex].name.push(basket[0].name);
+      foodToOrder[foodOderIndex].price.push(basket[0].price);
+      foodToOrder[foodOderIndex.amount].push(basket[0].amount, 1);
+   } else {
+      foodToOrder[foodOderIndex].amount += 1
+   }
 }
