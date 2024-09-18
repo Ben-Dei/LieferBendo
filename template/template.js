@@ -4,18 +4,18 @@ function templateOderList(foodItem, foodOderIndex){
             <div>
                 <div class="line"></div>
                 <div class="top-bar">${foodItem.name}<div class="addSome" id="addSome${foodOderIndex}" onclick ="fromDishesToBasket(${foodOderIndex})">➕</div></div><br>
-                <div>${foodItem.price} €</div>
-                <div><p>${foodItem.information}<br><br></p></div>
+                <div class="txt">${foodItem.price} €</div>
+                <div class="txt"><p>${foodItem.information}<br><br></p></div>
             </div>
         `;
 }
 
-function templateBasketList(basketItem, basketIndex){
+function templateBasketList(basketItem){
     return /*html*/`
             <div>
-                <div><p>${basketIndex.name}</p></div>
-                <div><p>${basketItem.price}</p></div>
-                <div><p>${basketItem.amount}</p></div>
+                <div class="top-bar">${basketItem.name}<div><img id="deleteChoosenDish" onclick="deletedish()" src="./assets/img/trash-solid-24.png"></div></div>
+                <div class="txt">${basketItem.price}</div>
+                <div class="txt"><img onclick="addFood()" class="add-img" src="./assets/img/message-rounded-add-solid-24.png"> ${basketItem.amount} <img onclick="minusFood()" class="minus-img" src="./assets/img/message-rounded-minus-solid-24.png"> </div>
             </div>
         `;
 }

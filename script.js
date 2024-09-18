@@ -41,13 +41,8 @@ let foodToOrder = [
     },
 ];
 
-let basket = [ 
-    {
-        "name" : [],
-        "price" : [],
-        "amount" : [],
-    }, 
-    
+let basket = [
+   
 ];
 
 
@@ -70,12 +65,11 @@ function renderBasket(){
     }
 }
 
-function fromDishesToBasket(foodOderIndex){
-   if(foodOderIndex == -1){
-      foodToOrder[foodOderIndex].name.push(basket[0].name);
-      foodToOrder[foodOderIndex].price.push(basket[0].price);
-      foodToOrder[foodOderIndex.amount].push(basket[0].amount, 1);
-   } else {
-      foodToOrder[foodOderIndex].amount += 1
-   }
+function fromDishesToBasket(foodOderIndex, basketIndex){
+    if(basket == 0){
+        basket.push(foodToOrder[foodOderIndex]); 
+    } else {
+        basket[basketIndex] += 1
+    }
+    renderBasket();
 }
