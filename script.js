@@ -1,5 +1,3 @@
-
-
 let foodToOrder = [
     {
         "name" : "Pizza Salami",
@@ -47,13 +45,6 @@ let basket = [];
 
 let globalIndex = 0;
 
-
-
-
-
-
-
-
 function renderToOderList(){
     let content = document.getElementById('to_oder');
     content.innerHTML = "";
@@ -83,7 +74,8 @@ function renderBasket(){
         basketContent.innerHTML += templateBasketList(basketItem, basketIndex);
     }
     basketContent.innerHTML += /*html*/`
-        <div id="txt"><p>Summe: ${rechneGesamtpreis()} €</p></div>
+        <div id="txt"><p>Summe: ${calculateHolePrize()} €</p></div>
+        <div><button onclick="toOrder()">Bestellen</button></div>
     `
 }
 
@@ -99,7 +91,7 @@ function templateBasketList(basketItem, basketIndex){
 }
 
 
-function rechneGesamtpreis(){
+function calculateHolePrize(){
     let gesammtsumme = 0;
     for (let i = 0; i < basket.length; i++){
         gesammtsumme += basket[i].price*basket[i].amount;
@@ -116,14 +108,11 @@ function checkUpFood(food){
 function fromDishesToBasket(foodOderIndex){
     globalIndex = foodOderIndex;
     let indexInBasket = basket.findIndex(checkUpFood);
-    console.log(indexInBasket)
     if (indexInBasket == -1){
         basket.push(foodToOrder[foodOderIndex]);
-        console.log("wir sind im if Part");
         
     } else {
     
-        console.log("wir sind im else Part");
         basket[indexInBasket].amount++
        
     }
@@ -140,12 +129,19 @@ function minusFood(basketIndex){
     if (basket[basketIndex].amount > 1){
         basket[basketIndex].amount--;
     } else {
-        deletedish(basketIndex);
+        deleteDish(basketIndex);
     }
     renderBasket();
 }
 
-function deletedish(basketIndex){
+function deleteDish(basketIndex){
     basket.splice(basketIndex, 1);
     renderBasket();
 }
+
+function toOrder(basketIndex){
+    alert ("Vielen Dank für Ihre Bestellung; Ihre Bestellung wird nun bearbeitet");
+    basket.splice(basketIndex, 6);
+    renderBasket();
+}
+

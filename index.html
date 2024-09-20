@@ -14,18 +14,20 @@
     <header class="header-section">
         <img src="./assets/icon/android-chrome-192x192.png" alt="">
         <h1>LieferBendo</h1>
-        <img onclick="toggleBasket()" class="card-img" src="./assets/img/cart-add-regular-24.png">
     </header>
         <img class="img_atT" src="./assets/img/header_img.jpg">
-    <div id="order_price_basket_section">
-    <section id="food_prices">
-        <h2 class="txt">Gerichte</h2>
-        <div id="to_oder"></div>
-    </section>
-    <section class="basket_things" id="basket">
-        <h2>Warenkorb</h2>
-        <div class="content_of_basket" id="basket_content"></div>
-    </section>
+    <div id="overlay">
+        <div id="order_price_basket_section">
+            <section id="food_prices">
+                <h2 class="txt">Gerichte</h2>
+                <div id="to_oder"></div>
+            </section>
+            <section class="basket_things" id="basket">
+                <h2>Warenkorb</h2>
+                <div class="content_of_basket" id="basket_content"></div>
+            </section>
+        </div>
+        <button id="basket_button" onclick="toogleBasket()" class="ab-max_width_720">Warenkorb</button>
     </div>
 </body>
 </html>
