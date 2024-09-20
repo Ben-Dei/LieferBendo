@@ -1,3 +1,5 @@
+
+
 let foodToOrder = [
     {
         "name" : "Pizza Salami",
@@ -41,9 +43,15 @@ let foodToOrder = [
     },
 ];
 
-let basket = [
-   
-];
+let basket = [];
+
+let globalIndex = 0;
+
+
+
+
+
+
 
 
 function renderToOderList(){
@@ -56,6 +64,17 @@ function renderToOderList(){
     }
 }
 
+function templateOderList(foodItem, foodOderIndex){
+    return /*html*/`
+            <div>
+                <div class="line"></div>
+                <div class="top-bar">${foodItem.name}<div class="addSome" id="addSome${foodOderIndex}" onclick ="fromDishesToBasket(${foodOderIndex})">➕</div></div>
+                <div class="txt">${foodItem.price} €</div>
+                <div class="txt"><p>${foodItem.information}<br><br></p></div>
+            </div>
+        `;
+}
+
 function renderBasket(){
     let basketContent = document.getElementById('basket_content');
     basketContent.innerHTML = "";
@@ -63,13 +82,70 @@ function renderBasket(){
         let basketItem = basket[basketIndex];
         basketContent.innerHTML += templateBasketList(basketItem, basketIndex);
     }
+    basketContent.innerHTML += /*html*/`
+        <div id="txt"><p>Summe: ${rechneGesamtpreis()} €</p></div>
+    `
 }
 
-function fromDishesToBasket(foodOderIndex, basketIndex){
-    if(basket == 0){
-        basket.push(foodToOrder[foodOderIndex]); 
-    } else {
-        basket[basketIndex] += 1
+function templateBasketList(basketItem, basketIndex){
+    return /*html*/`
+            <div>
+                <div class="top-bar">${basketItem.name}<div><img id="deleteChoosenDish" onclick="deletedish(${basketIndex})" src="./assets/img/trash-solid-24.png"></div></div>
+                <div class="txt">${basketItem.price}</div>
+                <div class="txt"><img onclick="addFood(${basketIndex})" class="add-img" src="./assets/img/message-rounded-add-solid-24.png"> ${basketItem.amount} <img onclick="minusFood(${basketIndex})" class="minus-img" src="./assets/img/message-rounded-minus-solid-24.png"> </div><br><br>
+
+            </div>
+        `;
+}
+
+
+function rechneGesamtpreis(){
+    let gesammtsumme = 0;
+    for (let i = 0; i < basket.length; i++){
+        gesammtsumme += basket[i].price*basket[i].amount;
     }
+    return (gesammtsumme).toFixed(2);
+}
+
+function checkUpFood(food){
+    return food.name == foodToOrder[globalIndex].name;
+         
+           
+}
+// meine addToBasket Function
+function fromDishesToBasket(foodOderIndex){
+    globalIndex = foodOderIndex;
+    let indexInBasket = basket.findIndex(checkUpFood);
+    console.log(indexInBasket)
+    if (indexInBasket == -1){
+        basket.push(foodToOrder[foodOderIndex]);
+        console.log("wir sind im if Part");
+        
+    } else {
+    
+        console.log("wir sind im else Part");
+        basket[indexInBasket].amount++
+       
+    }
+    
+    renderBasket();
+}
+
+function addFood(basketIndex){
+        basket[basketIndex].amount++;
+        renderBasket();
+}
+
+function minusFood(basketIndex){
+    if (basket[basketIndex].amount > 1){
+        basket[basketIndex].amount--;
+    } else {
+        deletedish(basketIndex);
+    }
+    renderBasket();
+}
+
+function deletedish(basketIndex){
+    basket.splice(basketIndex, 1);
     renderBasket();
 }
